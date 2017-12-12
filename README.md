@@ -6,13 +6,13 @@
 
 - Points: ~50-100
 
-- [Dowload]( )
+- Dowload:
 
 - Solution: https://ctftime.org/task/4773
 
 ---
 
-# Setup (also inside the .zip)
+# Setup
 
 - create virtual venv (python3 virtualenv3)
 	`virtualenv venv`
