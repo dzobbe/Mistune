@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Test{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div id="welcome" class="twelve columns">
+    <h4>Test the Markdown Engine.</h4> 
+    <form method=post action="">
+
+        {{ form.text(class_="u-full-width", rows="20") }}
+        {% if form.text.errors %}
+        {% for error in form.text.errors %}
+        <div class="alert alert-error">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            {{ error }} 
+        </div>
+        {% endfor %}
+        {% endif %}
+        
+        <label></label>
+        {{ form.test(class_="button-primary") }}
+
+    </form>
+    <h4>Result:</h4>
+    <div class="twelve columns blackblock">
+    </div>
+    {% autoescape false %}
+        <p>{{ html }}</p>
+    {% endautoescape %}
+</div>
+{% endblock %}

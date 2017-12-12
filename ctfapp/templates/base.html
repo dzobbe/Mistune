@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+	</script>
+
+	<link rel="icon" type="image/png" href="">
+	{% endblock %}
+</head>
+<body>
+	<div class="container">
+		<div class="five columns header">
+			<h1>Mist Tune</h1>
+		</div>
+		
+		<div id="nav" class="seven columns">
+			<ul>
+				<li><a href="{{ url_for('test') }}">Tester</a></li>
+				<li><a href="{{ url_for('send') }}">Send to Admin</a></li>
+			</ul>
+		</div>
+		<div class="twelve columns blackblock">
+		</div>
+		<div class="twelve columns">
+		{% with messages = get_flashed_messages() %}
+        	{% if messages %}
+				{% for message in messages %}
+				<div class="alert alert-success">
+				 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+					{{ message }}
+				</div>
+				{% endfor %}
+			{% endif %}
+      	{% endwith %}
+      	<div>
+		{% block content %}{% endblock %}
+		<div class="twelve columns blackblockb">
+		</div>
+	</div>
+</body>

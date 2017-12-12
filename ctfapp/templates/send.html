@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Send{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div id="welcome" class="twelve columns">
+  <h4>Try to steal the cookie!</h4>
+  <ul>
+  	<li><small>We use <code>mistune.Renderer(escape=True, hard_wrap=True)</code></small></li>
+  	<li><small>The admin will look at your converted Markdown.</small></li>
+  	<li><small>The admin will click on links (&lt;a&gt;).</small></li>
+  </ul>
+  <form method=post action="">
+
+		{{ form.text(class_="u-full-width", rows="20") }}
+		{% if form.text.errors %}
+		{% for error in form.text.errors %}
+		<div class="alert alert-error">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			{{ error }}	
+		</div>
+		{% endfor %}
+		{% endif %}
+		
+		<label></label>
+		{{ form.send(class_="button-primary") }}
+		{{ form.recaptcha }}
+		{% if form.recaptcha.errors %}
+		{% for error in form.recaptcha.errors %}
+		<br>
+		<div class="alert alert-error">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			{{ error }}	
+		</div>
+		{% endfor %}
+		{% endif %}
+	</form>
+</div>
+{% endblock %}
